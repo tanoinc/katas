@@ -1,22 +1,21 @@
 package kata1
 
 func GetInsuranceAmount(status Status) int {
-	var amount int
 	if !status.HasInsurance() {
-		amount = 1
-	} else {
-		if status.IsTotaled() {
-			amount = 10000
-		} else {
-			if status.IsDented() {
-				amount = 160
-				if status.IsBigDent() {
-					amount = 270
-				}
-			} else {
-				amount = 0
-			}
-		}
+		return 1
 	}
-	return amount
+
+	if status.IsTotaled() {
+		return 10000
+	}
+
+	if !status.IsDented() {
+		return 0
+	}
+
+	if status.IsBigDent() {
+		return 270
+	}
+
+	return 160
 }
